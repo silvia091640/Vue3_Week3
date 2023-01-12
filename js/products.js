@@ -29,7 +29,6 @@ const app=createApp({
         getAllProducts(){
             axios.get(`${apiUrl}/api/${path}/admin/products/all`)
             .then((res)=>{
-                console.log(res.data.products)
                 this.products=res.data.products;
                 
             })
@@ -46,8 +45,7 @@ const app=createApp({
                     this.getAllProducts();
                     
                 })
-                .catch(error=>{
-                
+                .catch(error=>{              
                     console.log(error);
                 })
            
@@ -57,7 +55,6 @@ const app=createApp({
             {
                 axios.post(`${apiUrl}/api/${path}/admin/product`,{data :this.tempProduct })
                 .then((res)=>{
-                    console.log("OK");
                     productModal.hide();
                     this.getAllProducts();
                     
@@ -93,7 +90,6 @@ const app=createApp({
         openModal(type,item){ 
             this.isNew=type==='create' ? true : false;
             if (type==='edit'){
-                console.log(item);
                 this.tempProduct={...item};
 
             }
